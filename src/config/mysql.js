@@ -1,6 +1,5 @@
 import mysql from 'mysql2/promise';
 
-
 async function getConnection() {
     const connection = await mysql.createConnection({
         host: 'localhost',
@@ -9,18 +8,18 @@ async function getConnection() {
         password: '1234',
         database: 'merk2'
     });
-
     return connection;
 }
 
 async function testConnection() {
     try {
         const connection = await getConnection();
-        console.log("Connected Correctly");
-        connection.end();
+        console.log("Conexión correcta");
     } catch (e) {
-        console.error("Error de conexion",e);
+        console.error("Error de conexion",e)
     }
 }
 
-export { getConnection, testConnection };
+export { getConnection,testConnection};
+
+
