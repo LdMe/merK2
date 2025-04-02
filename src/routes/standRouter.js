@@ -1,6 +1,6 @@
 import {Router} from "express";
 import standController from "../controllers/standController.js" // default
-import {getAll,getByID} from "../controllers/standController.js"
+
 const router = Router();
 
 // conseguir todos los stands
@@ -11,6 +11,7 @@ router.post("/",standController.create)
 // conseguir stand por id
 router.get("/:id",standController.getByID)
 // modificar un stand
+router.get("/:id/edit",standController.editForm)
 router.post("/:id",standController.edit)
 
 // ruta para eliminar un stand

@@ -1,6 +1,7 @@
 extends ../layout
 
 block content 
-    h1 Stand #{standId} 
-    p Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime quibusdam cumque explicabo unde repellendus provident dolore quos odio molestiae eligendi qui, reprehenderit vero ipsa quasi delectus eveniet inventore est consequatur?
-    p Ipsam quam ex in eius ipsum amet numquam placeat voluptate cum suscipit voluptatibus id incidunt labore quia dolorem, nulla assumenda sed accusantium dicta hic minus rerum. Mollitia delectus repudiandae ipsum.
+    if stand 
+        include standCard 
+    else 
+        p There is no stand for that id

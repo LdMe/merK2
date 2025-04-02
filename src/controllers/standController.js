@@ -1,36 +1,48 @@
+import standModel from "../models/stand.js"
 
-function getAll(req,res){
-    //res.send("Conseguir todos los stands");
-    res.render("stand/list");
+async function getAll(req,res){
+    const stands = await standModel.getAll();
+    //res.json(stands);
+    res.render("stand/list",{stands});
 }
 
-function getByID(req,res){
+async function getByID(req,res){
     const id = req.params.id;
-    //res.send("Conseguir el stand "+id);
-    res.render("stand/show",{standId:id});
+    const stand = await standModel.getByID(id);
+    //res.json(stand);
+    res.render("stand/show",{stand});
 }
 
-function createForm(req,res){
+async function createForm(req,res){
     res.render("stand/create");
 }
-function create(req,res){
-    //res.send("Creamos un stand");
+async function create(req,res){
     const {name,size} = req.body;
-    // const name = req.body.name;
-    // const size = req.body.size;
-    console.log("name",name,"size",size);
+    const category = 1;
+    const creation_date = new Date();
+    const response = await standModel.create(name,size,creation_date,category);
+    
+    res.json(response);
+    //res.redirect("/stand");
+}
+
+async function editForm(req,res){
+    const id = req.params.id;
+    const stand = await standModel.getByID(id);
+    res.render("stand/edit",{stand});
+}
+
+async function edit(req,res){
+    const id = req.params.id;
+    const {name,size,creation_date,category_id} = req.body; // los datos para modificar el stand
+    const result = await standModel.update(id,name,size,creation_date,category_id);
+    res.redirect("/stand/" + id);
+}
+
+async function remove(req,res){
+    const id = req.params.id;
+    const response = await standModel.remove(id);
     res.redirect("/stand");
-}
-
-function edit(req,res){
-    const id = req.params.id;
-    const datos = req.body; // los datos para modificar el stand
-    res.send("Modificamos el stand "+ id);
-}
-
-function remove(req,res){
-    const id = req.params.id;
-    res.send("Borramos el stand "+ id);
 }
 
 export{
@@ -38,6 +50,7 @@ export{
     getByID,
     createForm,
     create,
+    editForm,
     edit,
     remove
 }
@@ -47,6 +60,7 @@ export default {
     getByID,
     createForm,
     create,
+    editForm,
     edit,
     remove
 };

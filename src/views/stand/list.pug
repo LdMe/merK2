@@ -2,8 +2,12 @@ extends ../layout
 
 block content 
     h1 Stands 
-    ul 
-        li Stand 1
-        li Stand 2
-        li Stand 3
+    a(href="/stand/new") New Stand
+    section(class="stand-list")
+        if stands
+            each stand in stands 
+                a(href=`/stand/${stand.stand_id}`)
+                    include standCard
+        else 
+            p There is no stand available
         

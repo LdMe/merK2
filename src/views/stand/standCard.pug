@@ -1,0 +1,9 @@
+article 
+    h2(class="stand-card")= stand.name 
+    p(class="stand-card__size")= stand.size 
+    p(class="stand-card__creation-date")= stand.creation_date 
+    p(class="stand-card__category")= stand.category_id
+    a(href=`/stand/${stand.stand_id}/edit`)
+        button Edit
+    form(action=`/stand/${stand.stand_id}/delete`, method="post") 
+        button Delete
