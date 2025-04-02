@@ -1,8 +1,10 @@
 import express from "express";
 import dotenv from "dotenv";
 import router from "./routes/router.js";
+import {testConnection} from "./config/mysql.js"
 
 dotenv.config();
+testConnection();
 
 const APP_PORT = process.env.APP_PORT;
 const app = express();
