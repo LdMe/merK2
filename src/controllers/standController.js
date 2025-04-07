@@ -1,3 +1,5 @@
+import Product from "../models/product.js";
+import Seller from "../models/seller.js";
 import standModel from "../models/stand.js";
 import StandCategory from "../models/standCategory.js";
 
@@ -15,9 +17,11 @@ async function getByID(req,res){
     const id = req.params.id;
     //const {id} = req.params;
     //res.send("Conseguir el stand "+id);
-    const stand = await standModel.findByPk(id);
-    //res.json(stand);
-    res.render("stand/show",{stand});
+    const stand = await standModel.findByPk(id,{
+        include: [Product,StandCategory,Seller]
+    });
+    res.json(stand);
+    //res.render("stand/show",{stand}); // la ruta de render es a partir de la carpeta views, no la del router
 }
 
 async function createForm(req,res){

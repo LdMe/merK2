@@ -1,6 +1,8 @@
 import { DataTypes } from "sequelize";
 import connection from "../config/sequelize.js";
 import StandCategory from "./standCategory.js";
+import Product from "./product.js";
+import Seller from "./seller.js";
 
 const Stand = connection.define("stand", {
     stand_id: {
@@ -28,4 +30,12 @@ const Stand = connection.define("stand", {
 
 Stand.belongsTo(StandCategory,{foreignKey:"stand_category_id"});
 StandCategory.hasMany(Stand,{foreignKey:"stand_category_id"});
+
+
+Product.belongsTo(Stand,{foreignKey:"stand_id"});
+Stand.hasMany(Product,{foreignKey:"stand_id"});
+
+Seller.belongsTo(Stand,{foreignKey:"stand_id"});
+Stand.hasMany(Seller,{foreignKey:"stand_id"});
+
 export default Stand;

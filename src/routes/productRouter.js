@@ -1,5 +1,5 @@
 import {Router} from "express";
-
+import productController from "../controllers/productController.js";
 const router = Router();
 
 // conseguir todos los productos
@@ -7,10 +7,7 @@ router.get("/",(req,res)=>{
     res.send("Conseguir todos los productos");
 })
 // conseguir producto por id
-router.get("/:id",(req,res)=>{
-    const id = req.params.id;
-    res.send("Conseguir el producto "+id);
-})
+router.get("/:id",productController.getByID)
 // crear un producto
 router.post("/",(req,res)=>{
     res.send("Creamos un producto");

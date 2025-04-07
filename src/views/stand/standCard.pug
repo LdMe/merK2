@@ -3,6 +3,14 @@ article
     p(class="stand-card__size")= stand.size 
     p(class="stand-card__creation-date")= stand.creation_date
     p(class="stand-card__category")= stand.category_id 
+    if stand.products 
+        h3 Products
+        section(class="stand-products")
+            each product in stand.products 
+                article(class="stand-product")
+                    h4= product.name 
+                    p #{product.price}€
+                    p Stock: #{product.stock}
     a(href=`/stand/${stand.stand_id}/edit`)
         button Edit
     form(action=`/stand/${stand.stand_id}/delete`, method="post") 
