@@ -11,7 +11,10 @@ block content
             option(value="medium" selected= stand.size ==="medium") Medium 
             option(value="large" selected= stand.size ==="large") Large 
         label(for="creation_date") Creation date 
-        input(id="creation_date" type="date" name="creation_date" value= stand.creation_date.toISOString().split('T')[0])
-        label(for="category_id") Category 
-        input(type="text" id="category_id" name="category_id" value= stand.stand_category_id)
+        input(id="creation_date" type="date" name="creation_date" value= stand.creation_date)
+        label(for="category_id") Category
+        select#stand_category(name="category_id") 
+            each category in categories 
+                option(value = category.stand_category_id 
+                selected=stand.stand_category_id===category.stand_category_id)= category.name
         button Submit
