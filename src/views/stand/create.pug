@@ -10,4 +10,8 @@ block content
             option(value="small") Small
             option(value="medium") Medium 
             option(value="large") Large 
+        label(for="category_id") Category 
+        select#category_id(name="category_id") 
+            each category in categories 
+                option(value=category.stand_category_id)= category.name
         button Submit

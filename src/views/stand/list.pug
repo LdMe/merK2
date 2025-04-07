@@ -8,6 +8,7 @@ block content
             each stand in stands 
                 a(href=`/stand/${stand.stand_id}`)
                     include standCard
+                    p= stand.stand_category.name
         else 
             p There is no stand available
         
