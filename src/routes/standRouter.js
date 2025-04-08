@@ -1,13 +1,14 @@
 import {Router} from "express";
 import standController from "../controllers/standController.js" // default
-import {getAll,getByID} from "../controllers/standController.js"
+import { isLoggedInSession,isSeller} from "../middlewares/authMiddleware.js";
+
 const router = Router();
 
 // conseguir todos los stands
 router.get("/",standController.getAll)
 // crear un stand
-router.get("/new",standController.createForm)
-router.post("/",standController.create)
+router.get("/new",isSeller,standController.createForm)
+router.post("/",isSeller,standController.create)
 // conseguir stand por id
 router.get("/:id",standController.getByID)
 // modificar un stand

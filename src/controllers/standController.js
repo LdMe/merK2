@@ -10,7 +10,8 @@ async function getAll(req,res){
     });
     //console.log(stands);
     //res.json(stands)
-    res.render("stand/list",{stands});
+    const role = req.session.user?.role;
+    res.render("stand/list",{stands,role});
 }
 
 async function getByID(req,res){
@@ -20,8 +21,8 @@ async function getByID(req,res){
     const stand = await standModel.findByPk(id,{
         include: [Product,StandCategory,Seller]
     });
-    res.json(stand);
-    //res.render("stand/show",{stand}); // la ruta de render es a partir de la carpeta views, no la del router
+    //res.json(stand);
+    res.render("stand/show",{stand}); // la ruta de render es a partir de la carpeta views, no la del router
 }
 
 async function createForm(req,res){

@@ -4,6 +4,10 @@ html
     block styles
   body
     include navbar.pug
+    if error 
+        p(class="error")= error
+    if message 
+        p(class="message")= message
     block content
     #footer
         p some footer content

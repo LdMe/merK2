@@ -2,7 +2,8 @@ extends ../layout
 
 block content 
     h1 Stands 
-    a(href="/stand/new") New Stand
+    if role==="seller"
+        a(href="/stand/new") New Stand
     section(class="stand-list")
         if stands
             each stand in stands 
