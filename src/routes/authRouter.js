@@ -6,4 +6,6 @@ router.get("/login",authController.loginForm)
 router.get("/register",authController.registerForm);
 
 router.post("/register",authController.register);
+router.post("/login",authController.login);
+
 export default router;

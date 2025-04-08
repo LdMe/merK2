@@ -25,49 +25,49 @@ VALUES ('Estilo Urbano', 'medium', '2024-01-15', 3);
 -- First insert users (both sellers and clients)
 -- Sellers for "Delicias Caseras"
 INSERT INTO `merk2`.`user` (`name`, `email`, `password`) 
-VALUES ('María López', 'maria.lopez@example.com', 'password123');
+VALUES ('María López', 'maria.lopez@example.com', '$2b$10$QfJ2P7fKHAAWjFSeLXNwzuWkcvTrnwv89/HjxTCPs0FUfEOTsXl7u');
 INSERT INTO `merk2`.`user` (`name`, `email`, `password`) 
-VALUES ('Juan Pérez', 'juan.perez@example.com', 'password123');
+VALUES ('Juan Pérez', 'juan.perez@example.com', '$2b$10$QfJ2P7fKHAAWjFSeLXNwzuWkcvTrnwv89/HjxTCPs0FUfEOTsXl7u');
 
 -- Sellers for "Sabores del Mundo"
 INSERT INTO `merk2`.`user` (`name`, `email`, `password`) 
-VALUES ('Ana Rodríguez', 'ana.rodriguez@example.com', 'password123');
+VALUES ('Ana Rodríguez', 'ana.rodriguez@example.com', '$2b$10$QfJ2P7fKHAAWjFSeLXNwzuWkcvTrnwv89/HjxTCPs0FUfEOTsXl7u');
 INSERT INTO `merk2`.`user` (`name`, `email`, `password`) 
-VALUES ('Carlos Gómez', 'carlos.gomez@example.com', 'password123');
+VALUES ('Carlos Gómez', 'carlos.gomez@example.com', '$2b$10$QfJ2P7fKHAAWjFSeLXNwzuWkcvTrnwv89/HjxTCPs0FUfEOTsXl7u');
 
 -- Sellers for "Artesanías Mágicas"
 INSERT INTO `merk2`.`user` (`name`, `email`, `password`) 
-VALUES ('Laura Martínez', 'laura.martinez@example.com', 'password123');
+VALUES ('Laura Martínez', 'laura.martinez@example.com', '$2b$10$QfJ2P7fKHAAWjFSeLXNwzuWkcvTrnwv89/HjxTCPs0FUfEOTsXl7u');
 INSERT INTO `merk2`.`user` (`name`, `email`, `password`) 
-VALUES ('Pedro Sánchez', 'pedro.sanchez@example.com', 'password123');
+VALUES ('Pedro Sánchez', 'pedro.sanchez@example.com', '$2b$10$QfJ2P7fKHAAWjFSeLXNwzuWkcvTrnwv89/HjxTCPs0FUfEOTsXl7u');
 
 -- Sellers for "Creaciones Únicas"
 INSERT INTO `merk2`.`user` (`name`, `email`, `password`) 
-VALUES ('Sofía Fernández', 'sofia.fernandez@example.com', 'password123');
+VALUES ('Sofía Fernández', 'sofia.fernandez@example.com', '$2b$10$QfJ2P7fKHAAWjFSeLXNwzuWkcvTrnwv89/HjxTCPs0FUfEOTsXl7u');
 INSERT INTO `merk2`.`user` (`name`, `email`, `password`) 
-VALUES ('Miguel Torres', 'miguel.torres@example.com', 'password123');
+VALUES ('Miguel Torres', 'miguel.torres@example.com', '$2b$10$QfJ2P7fKHAAWjFSeLXNwzuWkcvTrnwv89/HjxTCPs0FUfEOTsXl7u');
 
 -- Sellers for "Moda Express"
 INSERT INTO `merk2`.`user` (`name`, `email`, `password`) 
-VALUES ('Carmen Díaz', 'carmen.diaz@example.com', 'password123');
+VALUES ('Carmen Díaz', 'carmen.diaz@example.com', '$2b$10$QfJ2P7fKHAAWjFSeLXNwzuWkcvTrnwv89/HjxTCPs0FUfEOTsXl7u');
 INSERT INTO `merk2`.`user` (`name`, `email`, `password`) 
-VALUES ('Roberto Flores', 'roberto.flores@example.com', 'password123');
+VALUES ('Roberto Flores', 'roberto.flores@example.com', '$2b$10$QfJ2P7fKHAAWjFSeLXNwzuWkcvTrnwv89/HjxTCPs0FUfEOTsXl7u');
 
 -- Sellers for "Estilo Urbano"
 INSERT INTO `merk2`.`user` (`name`, `email`, `password`) 
-VALUES ('Elena Vargas', 'elena.vargas@example.com', 'password123');
+VALUES ('Elena Vargas', 'elena.vargas@example.com', '$2b$10$QfJ2P7fKHAAWjFSeLXNwzuWkcvTrnwv89/HjxTCPs0FUfEOTsXl7u');
 INSERT INTO `merk2`.`user` (`name`, `email`, `password`) 
-VALUES ('Javier Ruiz', 'javier.ruiz@example.com', 'password123');
+VALUES ('Javier Ruiz', 'javier.ruiz@example.com', '$2b$10$QfJ2P7fKHAAWjFSeLXNwzuWkcvTrnwv89/HjxTCPs0FUfEOTsXl7u');
 
 -- Clients
 INSERT INTO `merk2`.`user` (`name`, `email`, `password`) 
-VALUES ('Alejandro Mendoza', 'alejandro.mendoza@example.com', 'password123');
+VALUES ('Alejandro Mendoza', 'alejandro.mendoza@example.com', '$2b$10$QfJ2P7fKHAAWjFSeLXNwzuWkcvTrnwv89/HjxTCPs0FUfEOTsXl7u');
 INSERT INTO `merk2`.`user` (`name`, `email`, `password`) 
-VALUES ('Valentina Castro', 'valentina.castro@example.com', 'password123');
+VALUES ('Valentina Castro', 'valentina.castro@example.com', '$2b$10$QfJ2P7fKHAAWjFSeLXNwzuWkcvTrnwv89/HjxTCPs0FUfEOTsXl7u');
 INSERT INTO `merk2`.`user` (`name`, `email`, `password`) 
-VALUES ('Fernando Navarro', 'fernando.navarro@example.com', 'password123');
+VALUES ('Fernando Navarro', 'fernando.navarro@example.com', '$2b$10$QfJ2P7fKHAAWjFSeLXNwzuWkcvTrnwv89/HjxTCPs0FUfEOTsXl7u');
 INSERT INTO `merk2`.`user` (`name`, `email`, `password`) 
-VALUES ('Gabriela Morales', 'gabriela.morales@example.com', 'password123');
+VALUES ('Gabriela Morales', 'gabriela.morales@example.com', '$2b$10$QfJ2P7fKHAAWjFSeLXNwzuWkcvTrnwv89/HjxTCPs0FUfEOTsXl7u');
 
 -- Now insert sellers (associate user_id with stand_id)
 -- We'll use the user_id that was auto-generated when inserting into the user table
