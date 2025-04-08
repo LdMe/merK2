@@ -3,19 +3,10 @@ import connection from "../config/sequelize.js";
 import Sale from "./sale.js";
 
 const Seller = connection.define("seller",{
-    seller_id: {
+    user_id: {
         type: DataTypes.INTEGER.UNSIGNED,
         allowNull: false,
-        primaryKey: true,
-        autoIncrement: true
-    },
-    name: {
-        type: DataTypes.STRING(128),
-        allowNull: false,
-    },
-    email: {
-        type: DataTypes.STRING(128),
-        allowNull: false,
+        primaryKey: true
     },
     stand_id: {
         type: DataTypes.INTEGER.UNSIGNED
