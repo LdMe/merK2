@@ -7,6 +7,7 @@ dotenv.config();
 const APP_PORT = process.env.APP_PORT;
 const SESSION_SECRET = process.env.SESSION_SECRET;
 const app = express();
+app.use(express.static('public')); // para poder subir archivos publicos (estilos, js de front, etc.)
 app.use(session({
     secret: SESSION_SECRET,
     resave: true,
@@ -24,6 +25,6 @@ app.use("/",router);
 
 
 
-app.listen(APP_PORT,()=>{
+app.listen(3000,()=>{
     console.log(`Backend conectado al puerto ${APP_PORT}`);
 })
