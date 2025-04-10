@@ -2,58 +2,72 @@ import Product from "../../models/product.js";
 import Seller from "../../models/seller.js";
 import standModel from "../../models/stand.js";
 import StandCategory from "../../models/standCategory.js";
-import { StandNameNotProvided,IncorrectStandSize,StandCategoryNotProvided,StandCategoryNotFound } from "../../utils/errors.js";
-async function getAll(){
+import { StandNameNotProvided, IncorrectStandSize, StandCategoryNotProvided, StandCategoryNotFound } from "../../utils/errors.js";
+async function getAll() {
     const stands = await standModel.findAll({
-        include:StandCategory
+        include: StandCategory
     });
     return stands;
 }
 
 
-async function getByID(id){
-    const stand = await standModel.findByPk(id,{
-        include: [Product,StandCategory,Seller]
+async function getByID(id) {
+    const stand = await standModel.findByPk(id, {
+        include: [Product, StandCategory, Seller]
     });
     return stand;
 }
 
-async function create(data){
-    data.creation_date =  new Date();
-    if(!data.name){
+async function create(data) {
+    data.creation_date = new Date();
+    if (!data.name) {
         throw new StandNameNotProvided();
     }
     data.size = data.size ? data.size.toLowerCase() : "small";
-    const standSizes  = ["small","medium","large"];
-    if(!standSizes.includes(data.size)){
+    const standSizes = ["small", "medium", "large"];
+    if (!standSizes.includes(data.size)) {
         throw new IncorrectStandSize();
     }
-    if(!data.stand_category_id){
+    if (!data.stand_category_id) {
         throw new StandCategoryNotProvided()
     }
-    const category =  StandCategory.findByPk(data.stand_category_id);
-    if(!category){
+    const category = StandCategory.findByPk(data.stand_category_id);
+    if (!category) {
         throw new StandCategoryNotFound();
     }
     const response = await standModel.create(data);
     return response;
 }
 
-async function edit(id,data){
+async function edit(id, data) {
+    const standSizes = ["small", "medium", "large"];
+    if (data.size) {
+        data.size = data.size.toLowerCase();
+        if (!standSizes.includes(data.size)) {
+            throw new IncorrectStandSize();
+        }
+    }
+    if (data.stand_category_id) {
+        const category = StandCategory.findByPk(data.stand_category_id);
+        if (!category) {
+            throw new StandCategoryNotFound();
+        }
+    }
+    // otras comprobaciones como formato de fecha, etc.
     const result = await standModel.update(
         data,
         {
-            where:{
-                stand_id:id
+            where: {
+                stand_id: id
             }
         }
     )
     return result;
 }
 
-async function remove(id){
-    const response  = await standModel.destroy({
-        where:{
+async function remove(id) {
+    const response = await standModel.destroy({
+        where: {
             stand_id: id
         }
     });
