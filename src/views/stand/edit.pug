@@ -12,8 +12,8 @@ block content
             option(value="large" selected=stand.size==="large") Large 
         label(for="creation_date") Creation date 
         input(id="creation_date" type="date" name="creation_date" value=stand.creation_date)
-        label(for="category_id") Category 
-        select#category_id(name="category_id") 
+        label(for="stand_category_id") Category 
+        select#stand_category_id(name="stand_category_id") 
             each category in categories 
                 option(value=category.stand_category_id 
                 selected=(stand.stand_category_id===category.stand_category_id))= category.name

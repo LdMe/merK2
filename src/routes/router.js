@@ -1,15 +1,11 @@
 import { Router } from "express";
-import standRouter from "./standRouter.js";
-import productRouter from "./productRouter.js";
-import authRouter from "./authRouter.js";
+import apiRouter from "./api/apiRouter.js";
+import viewRouter from "./views/viewRouter.js";
 
 const router = Router();
 
-router.get("/",(req,res)=>{
-    res.send("hello world");
-})
-router.use("/stand",standRouter);
-router.use("/product",productRouter);
-router.use("/",authRouter);
+router.use("/api",apiRouter);
+
+router.use("/",viewRouter);
 
 export default router
