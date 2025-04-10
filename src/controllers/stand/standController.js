@@ -2,7 +2,7 @@ import Product from "../../models/product.js";
 import Seller from "../../models/seller.js";
 import standModel from "../../models/stand.js";
 import StandCategory from "../../models/standCategory.js";
-
+import { StandNameNotProvided,IncorrectStandSize,StandCategoryNotProvided,StandCategoryNotFound } from "../../utils/errors.js";
 async function getAll(){
     const stands = await standModel.findAll({
         include:StandCategory
@@ -20,6 +20,21 @@ async function getByID(id){
 
 async function create(data){
     data.creation_date =  new Date();
+    if(!data.name){
+        throw new StandNameNotProvided();
+    }
+    data.size = data.size ? data.size.toLowerCase() : "small";
+    const standSizes  = ["small","medium","large"];
+    if(!standSizes.includes(data.size)){
+        throw new IncorrectStandSize();
+    }
+    if(!data.stand_category_id){
+        throw new StandCategoryNotProvided()
+    }
+    const category =  StandCategory.findByPk(data.stand_category_id);
+    if(!category){
+        throw new StandCategoryNotFound();
+    }
     const response = await standModel.create(data);
     return response;
 }
