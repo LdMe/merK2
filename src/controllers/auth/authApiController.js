@@ -18,8 +18,12 @@ async function login(req, res) {
     try {
         const {email,password}  = req.body;
         const result = await authController.login(email,password);
-        console.log(result);
-        const token = createToken(result);
+        
+        const data = {
+            user_id: result.user_id,
+            role: result.role
+        }
+        const token = createToken(data);
         res.json({token:token});
     } catch (error) {
         console.error(error);
@@ -36,8 +40,6 @@ function logout(req, res) {
     res.redirect("/");
 }
 export default {
-    loginForm,
-    registerForm,
     register,
     login,
     logout

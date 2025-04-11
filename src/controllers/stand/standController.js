@@ -62,7 +62,8 @@ async function edit(id, data) {
             }
         }
     )
-    return result;
+    const updatedStand = await standModel.findByPk(id);
+    return updatedStand;
 }
 
 async function remove(id) {

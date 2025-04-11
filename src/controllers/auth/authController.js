@@ -12,6 +12,7 @@ import {
 
 async function register(userData){
     //const {name,email,password,role} = req.body;
+    console.log(userData);
     if(!userData.name){
         throw new UserNameNotProvided();
     }
