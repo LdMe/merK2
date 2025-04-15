@@ -1,7 +1,8 @@
 import Seller from "../../models/seller.js";
 import Product from "../../models/product.js";
 import Stand from "../../models/stand.js";
-import { ProductNameNotProvided, ProductPriceNotProvided, ProductPriceNotValid, ProductStockNotProvided, StandNotFound } from "../../utils/errors.js";
+import { ProductNameNotProvided, ProductPriceNotProvided, ProductPriceNotValid, ProductStockNotProvided, ProductNotFound,StandNotFound } from "../../utils/errors.js";
+import {removePicture} from "../../utils/files.js";
 async function getAll() {
     const stands = await Product.findAll({
         include: Stand
@@ -18,6 +19,7 @@ async function getByID(id) {
 }
 
 async function create(data) {
+    console.log("image",data)
     if (!data.name) {
         throw new ProductNameNotProvided();
     }
@@ -39,25 +41,26 @@ async function create(data) {
 }
 
 async function edit(id, data) {
-    const standSizes = ["small", "medium", "large"];
-    if (data.size) {
-        data.size = data.size.toLowerCase();
-        if (!standSizes.includes(data.size)) {
-            throw new IncorrectStandSize();
-        }
-    }
-    if (data.stand_category_id) {
-        const category = Stand.findByPk(data.stand_category_id);
-        if (!category) {
+    
+    if (data.stand_id) {
+        const stand = Stand.findByPk(data.stand_id);
+        if (!stand) {
             throw new StandNotFound();
         }
+    }
+    const product = await Product.findByPk(id);
+    if(!product){
+        throw new ProductNotFound();
+    }
+    if (product.image) {
+        removePicture(product.image);
     }
     // otras comprobaciones como formato de fecha, etc.
     const result = await Product.update(
         data,
         {
             where: {
-                stand_id: id
+                product_id: id
             }
         }
     )
@@ -66,9 +69,13 @@ async function edit(id, data) {
 }
 
 async function remove(id) {
+    const product = await Product.findByPk(id);
+    if (product.image) {
+        removePicture(product.image);
+    }
     const response = await Product.destroy({
         where: {
-            stand_id: id
+            product_id: id
         }
     });
     return response;

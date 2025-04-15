@@ -24,7 +24,8 @@ async function getByID(req, res) {
 
 async function create(req, res) {
     try {
-        console.log("body",req.body);
+        const data = req.body;
+        data.image = req.file.filename;
         const response = await productController.create(req.body);
         res.json(response);
     } catch (error) {
@@ -40,7 +41,10 @@ async function create(req, res) {
 async function edit(req, res) {
     try {
         const id = req.params.id;
-        const result = await productController.edit(id, req.body);
+        console.log("file",req.body)
+        const data = req.body;
+        data.image = req.file?.filename;
+        const result = await productController.edit(id, data);
         res.json(result);
     } catch (error) {
         console.error(error);
