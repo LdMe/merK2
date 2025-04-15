@@ -25,6 +25,10 @@ const Product = connection.define("product",{
         type: DataTypes.SMALLINT.UNSIGNED,
         allowNull:false
     },
+    image: {
+        type: DataTypes.STRING(128),
+        allowNull: true,
+    },
     stand_id: {
         type: DataTypes.INTEGER.UNSIGNED
     }

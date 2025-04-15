@@ -1,4 +1,6 @@
-
+/**
+ * STANDS
+ */
 class StandNameNotProvided extends Error{
     constructor(){
         super("Stand name not provided");
@@ -24,7 +26,55 @@ class StandCategoryNotFound extends Error {
         this.statusCode = 400;
     }
 }
+class StandNotFound extends Error {
+    constructor(){
+        super("Stand not found");
+        this.statusCode = 404;
+    }
+}
+/**
+ * PRODUCTS
+ */
+class ProductNameNotProvided extends Error{
+    constructor(){
+        super("Product name not provided");
+        this.statusCode = 400;
+    }
+}
+class ProductPriceNotProvided extends Error{
+    constructor(){
+        super("Product price not provided");
+        this.statusCode = 400;
+    }
+}
+class ProductPriceNotValid extends Error{
+    constructor(){
+        super("Product price must be a number");
+        this.statusCode = 400;
+    }
+}
+class ProductStockNotProvided extends Error{
+    constructor(){
+        super("Product stock not provided");
+        this.statusCode = 400;
+    }
+}
+class ProductStockNotValid extends Error{
+    constructor(){
+        super("Product stock must be a number");
+        this.statusCode = 400;
+    }
+}
+class ProductNotFound extends Error{
+    constructor(){
+        super("Product not found");
+        this.statusCode = 404;
+    }
+}
 
+/**
+ *  USERS
+ */
 class UserNameNotProvided extends Error {
     constructor(){
         super("User name not provided");
@@ -67,10 +117,17 @@ export {
     IncorrectStandSize,
     StandCategoryNotProvided,
     StandCategoryNotFound,
+    StandNotFound,
+    ProductNameNotProvided,
+    ProductPriceNotProvided,
+    ProductPriceNotValid,
+    ProductStockNotProvided,
+    ProductStockNotValid,
+    ProductNotFound,
     UserNameNotProvided,
     UserEmailNotProvided,
     UserPasswordNotProvided,
     UserRoleIncorrect,
     UserEmailAlreadyExists,
-    UserInvalidCredentials
+    UserInvalidCredentials,
 }
