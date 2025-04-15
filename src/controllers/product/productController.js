@@ -2,7 +2,7 @@ import Seller from "../../models/seller.js";
 import Product from "../../models/product.js";
 import Stand from "../../models/stand.js";
 import { ProductNameNotProvided, ProductPriceNotProvided, ProductPriceNotValid, ProductStockNotProvided, ProductNotFound,StandNotFound } from "../../utils/errors.js";
-import {removePicture} from "../../utils/files.js";
+import {removeFile} from "../../utils/files.js";
 async function getAll() {
     const stands = await Product.findAll({
         include: Stand
@@ -53,7 +53,7 @@ async function edit(id, data) {
         throw new ProductNotFound();
     }
     if (product.image) {
-        removePicture(product.image);
+        removeFile(product.image);
     }
     // otras comprobaciones como formato de fecha, etc.
     const result = await Product.update(
@@ -71,7 +71,7 @@ async function edit(id, data) {
 async function remove(id) {
     const product = await Product.findByPk(id);
     if (product.image) {
-        removePicture(product.image);
+        removeFile(product.image);
     }
     const response = await Product.destroy({
         where: {

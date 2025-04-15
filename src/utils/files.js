@@ -6,7 +6,7 @@ import path from 'path';
  * @param {string} fileName
  * @returns {boolean}
  */
-function removePicture(fileName,folder="images") {
+function removeFile(fileName,folder="images") {
     try{
         const filePath = path.join(process.cwd(), 'public', folder, `${fileName}`);
         fs.unlinkSync(filePath);
@@ -18,5 +18,5 @@ function removePicture(fileName,folder="images") {
 }
 
 export {
-    removePicture
+    removeFile
 };
