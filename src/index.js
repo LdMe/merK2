@@ -2,11 +2,13 @@ import express from "express";
 import dotenv from "dotenv";
 import router from "./routes/router.js";
 import session from "express-session";
+import cors from "cors";
 
 dotenv.config();
 const APP_PORT = process.env.APP_PORT;
 const SESSION_SECRET = process.env.SESSION_SECRET;
 const app = express();
+app.use(cors());
 app.use(express.static('public')); // para poder subir archivos publicos (estilos, js de front, etc.)
 app.use(session({
     secret: SESSION_SECRET,

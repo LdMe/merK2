@@ -137,3 +137,5 @@ dist
 
 # mysql backup files
 *.bak
+
+/public/images

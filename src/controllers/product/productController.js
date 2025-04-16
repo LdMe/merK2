@@ -50,6 +50,10 @@ async function edit(id, data) {
     }
     const product = await Product.findByPk(id);
     if(!product){
+        // si no existe el producto borra la imagen que has subido
+        if (data.image) {
+            removeFile(data.image);
+        }
         throw new ProductNotFound();
     }
     if (product.image) {

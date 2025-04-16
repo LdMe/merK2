@@ -26,7 +26,7 @@ async function create(req, res) {
     try {
         const data = req.body;
         data.image = req.file.filename;
-        const response = await productController.create(req.body);
+        const response = await productController.create(data);
         res.json(response);
     } catch (error) {
         console.error(error);
