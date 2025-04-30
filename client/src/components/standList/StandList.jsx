@@ -4,19 +4,28 @@ import { getAllStands } from "../../utils/api/stand";
 import './StandList.css';
 
 
-function StandList(){
+function StandList({onRouteChange}){
     const [stands,setStands] = useState([]);
-    
+    const [error,setError] = useState(null);
     useEffect(()=>{
         handleLoadStands();
     },[])
     const handleLoadStands = async()=>{
         const data  = await getAllStands();
-        setStands(data);
+        if(data.error){
+            if(data.status === 401){
+                onRouteChange("login");
+            }else{
+                setError(data.error);
+            }
+        }else{
+            setStands(data);
+        }
     }
     return (
         <section className="stand-list">
             <h1>Stands</h1>
+            {error && <p className="error"> {error}</p>}
             <section className="stand-list--stands">
             {stands.length == 0 && <p>No hay stands</p>}
             {stands.map(stand=>{
