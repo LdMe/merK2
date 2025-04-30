@@ -5,7 +5,12 @@ async function getAllProducts(){
     return products;
 }
 
+async function deleteProduct(id){
+    const response = await fetchData(`/product/${id}`,"DELETE")
+    return response
+}
 
 export {
-    getAllProducts
+    getAllProducts,
+    deleteProduct
 }

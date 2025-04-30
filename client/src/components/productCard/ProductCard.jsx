@@ -1,6 +1,6 @@
 import './ProductCard.css';
 
-function ProductCard ({product}){
+function ProductCard ({product,onRemove}){
 
     return(
         <article className="article product">
@@ -20,6 +20,7 @@ function ProductCard ({product}){
                     <p className="product-stock">{product.stock} unidades</p>
                 )}
             </section>
+            <button onClick={()=>onRemove(product.product_id)} >Eliminar</button>
         </article>
     )
 }
