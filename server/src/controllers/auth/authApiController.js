@@ -16,15 +16,17 @@ async function register(req, res) {
 }
 async function login(req, res) {
     try {
+        console.log(req)
         const {email,password}  = req.body;
         const result = await authController.login(email,password);
         
         const data = {
+            name:result.name,
             user_id: result.user_id,
             role: result.role
         }
         const token = createToken(data);
-        res.json({token:token});
+        res.json({token:token,user:data});
     } catch (error) {
         console.error(error);
         if (error.statusCode) {
