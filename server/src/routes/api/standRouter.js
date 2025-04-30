@@ -4,7 +4,7 @@ import { isLoggedInAPI } from "../../middlewares/authMiddleware.js";
 const router = Router();
 
 // conseguir todos los stands
-router.get("/",isLoggedInAPI,standAPIController.getAll)
+router.get("/",standAPIController.getAll)
 // crear un stand
 router.post("/",standAPIController.create)
 // conseguir stand por id

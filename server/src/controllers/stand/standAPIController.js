@@ -2,7 +2,7 @@ import standController from "./standController.js";
 
 async function getAll(req, res) {
     try {
-        const user_id = req.user.user_id; // por si queremos saber quién hace la petición en la api
+        //const user_id = req.user.user_id; // por si queremos saber quién hace la petición en la api
         const stands = await standController.getAll();
         res.json(stands);
     } catch (error) {

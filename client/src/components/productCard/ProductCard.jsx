@@ -1,0 +1,27 @@
+import './ProductCard.css';
+
+function ProductCard ({product}){
+
+    return(
+        <article className="article product">
+            <section className="product-image">
+                <img src={product.image} alt={product.name}/>
+            </section>
+            <section className="product-data">
+                <h2>{product.name}</h2>
+                <p className="product-description">{product.description}</p>
+                {product.price ?(
+                    <p className="product-price">{product.price}€</p>
+
+                ):(
+                    <p className="product-price">no tiene precio</p>
+                )}
+                {product.stock && (
+                    <p className="product-stock">{product.stock} unidades</p>
+                )}
+            </section>
+        </article>
+    )
+}
+
+export default ProductCard;
