@@ -1,5 +1,6 @@
 import { useState,useEffect,useContext,useRef } from "react";
 import ProductCard from "../productCard/ProductCard";
+import SearchFilter from "../searchFilter/SearchFilter";
 import { getAllProducts,deleteProduct } from "../../utils/api/product";
 import RouteContext from "../../context/RouteContext";
 import './ProductList.css';
@@ -7,6 +8,7 @@ import './ProductList.css';
 
 function ProductList(){
     const [products,setProducts] = useState([]);
+    const [searchTerm,setSearchTerm] = useState("");
     const {onRouteChange} = useContext(RouteContext);
     const lastProductRef = useRef(null);
     const firstProductRef = useRef(null);
@@ -34,12 +36,14 @@ function ProductList(){
     const handleScrollToTop= ()=>{
         firstProductRef.current.scrollIntoView({behavior: 'smooth'})
     }
+    const filteredProducts = products.filter(product=> product.name.toLowerCase().includes(searchTerm.toLowerCase()))
     return (
         <section className="product-list">
             <h1>Productos</h1>
+            <SearchFilter onSearch={setSearchTerm}/>
             <section className="product-list--products">
             <div ref={firstProductRef}></div>
-            {products.map(product=>{
+            {filteredProducts.map(product=>{
                 return <ProductCard 
                 product={product} 
                 key={product.product_id} 
