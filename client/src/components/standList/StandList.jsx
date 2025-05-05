@@ -1,12 +1,14 @@
-import { useState,useEffect } from "react";
+import { useState,useEffect,useContext } from "react";
 import StandCard from "../standCard/StandCard";
 import { getAllStands } from "../../utils/api/stand";
+import RouteContext from "../../context/RouteContext";
 import './StandList.css';
 
 
-function StandList({onRouteChange}){
+function StandList(){
     const [stands,setStands] = useState([]);
     const [error,setError] = useState(null);
+    const {onRouteChange} = useContext(RouteContext);
     useEffect(()=>{
         handleLoadStands();
     },[])

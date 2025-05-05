@@ -1,17 +1,24 @@
-import { useState,useEffect } from "react";
+import { useState,useEffect,useContext,useRef } from "react";
 import ProductCard from "../productCard/ProductCard";
 import { getAllProducts,deleteProduct } from "../../utils/api/product";
+import RouteContext from "../../context/RouteContext";
 import './ProductList.css';
 
 
 function ProductList(){
     const [products,setProducts] = useState([]);
-    
+    const {onRouteChange} = useContext(RouteContext);
+    const lastProductRef = useRef(null);
+    const firstProductRef = useRef(null);
     useEffect(()=>{
         handleLoadProducts();
     },[])
+    useEffect(()=>{
+        lastProductRef.current.scrollIntoView({behavior: 'smooth'})
+    },[products])
     const handleLoadProducts = async()=>{
         const data  = await getAllProducts();
+        
         setProducts(data);
     }
     const handleRemoveProduct = async(product_id)=>{
@@ -24,10 +31,14 @@ function ProductList(){
             setProducts(newProducts);
         }
     }
+    const handleScrollToTop= ()=>{
+        firstProductRef.current.scrollIntoView({behavior: 'smooth'})
+    }
     return (
         <section className="product-list">
             <h1>Productos</h1>
             <section className="product-list--products">
+            <div ref={firstProductRef}></div>
             {products.map(product=>{
                 return <ProductCard 
                 product={product} 
@@ -36,6 +47,8 @@ function ProductList(){
                 /> 
             })
             }
+            <button onClick={handleScrollToTop}>Arriba</button>
+            <div ref={lastProductRef}></div>
             </section>
         </section>
     )

@@ -1,14 +1,15 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
-import  {login} from "../../utils/api/auth";
-
-function Auth ({onLogin}) {
+function Auth () {
     const [isRegister,setIsRegister] = useState(false);
     const [error,setError] = useState(null);
     const [userData,setUserData] = useState({
         email: "",
         password:""
     })
+    const {onLogin} = useContext(AuthContext);
+    
     const handleUserPassword = (e) =>{
         const newPassword = e.target.value;
         console.log("user password",newPassword)

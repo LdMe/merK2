@@ -1,11 +1,10 @@
-import { removeToken } from '../../utils/localStorage';
+import { useContext } from 'react';
+import RouteContext from '../../context/RouteContext';
+import { AuthContext } from '../../context/AuthContext';
 import './Navbar.css';
-function Navbar ({route,onRouteChange}){
-
-    const handleLogout = ()=>{
-        removeToken();
-        onRouteChange("home");
-    }
+function Navbar (){
+    const {route,onRouteChange} = useContext(RouteContext);
+    const {onLogout} = useContext(AuthContext);
     return (
         <nav>
             <ul className="nav-list">
@@ -22,7 +21,7 @@ function Navbar ({route,onRouteChange}){
                     <button onClick={()=>onRouteChange("login")}>Login</button>
                 </li>
                 <li className={"nav-item "}>
-                    <button onClick={handleLogout}>Logout</button>
+                    <button onClick={onLogout}>Logout</button>
                 </li>
             </ul>
         </nav>
