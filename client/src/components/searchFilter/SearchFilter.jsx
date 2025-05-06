@@ -9,7 +9,7 @@ function SearchFilter ({onSearch}) {
         timeoutRef.current = setTimeout(()=>{
             console.log("busqueda",data);
             onSearch(data);
-        },0)
+        },500)
         setSearchTerm(data);
     }
     return(

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Navbar from './components/navbar/Navbar';
-import ProductList from './components/productList/ProductList';
-import StandList from './components/standList/StandList';
+import ProductList from './pages/productList/ProductList';
+import StandList from './pages/standList/StandList';
 import Auth from './components/auth/Auth';
 import RouteContext from './context/RouteContext';
 import { AuthProvider } from './context/AuthContext';

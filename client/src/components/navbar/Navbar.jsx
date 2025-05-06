@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { NavLink } from 'react-router-dom';
 import RouteContext from '../../context/RouteContext';
 import { AuthContext } from '../../context/AuthContext';
 import './Navbar.css';
@@ -8,17 +9,17 @@ function Navbar (){
     return (
         <nav>
             <ul className="nav-list">
-                <li className={"nav-item "+(route==="home" ? "active": "") } >
-                    <button onClick={()=>onRouteChange("home")}>Home</button>
+                <li className={"nav-item " } >
+                    <NavLink to="/">Home</NavLink>
                 </li>
-                <li className={"nav-item "+(route==="stand" ? "active": "") }>
-                    <button onClick={()=>onRouteChange("stand")}>Stands</button>
+                <li >
+                    <NavLink to="/stand">Stands</NavLink>
                 </li>
-                <li className={"nav-item "+(route==="product" ? "active": "") }>
-                    <button onClick={()=>onRouteChange("product")}>Productos</button>
+                <li >
+                    <NavLink to="/product">Products</NavLink>
                 </li>
-                <li className={"nav-item "+(route==="login" ? "active": "") }>
-                    <button onClick={()=>onRouteChange("login")}>Login</button>
+                <li >
+                    <NavLink to="/login">Login</NavLink>
                 </li>
                 <li className={"nav-item "}>
                     <button onClick={onLogout}>Logout</button>

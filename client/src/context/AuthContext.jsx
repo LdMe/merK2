@@ -1,7 +1,7 @@
 import { createContext,useContext,useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { login } from "../utils/api/auth";
 import { saveToken,removeToken } from "../utils/localStorage";
-import RouteContext from "./RouteContext";
 
 const AuthContext = createContext({
     userData: {},
@@ -11,24 +11,24 @@ const AuthContext = createContext({
 
 const AuthProvider = ({children}) => {
     const [userData, setUserData] = useState(null);
-    const {onRouteChange} = useContext(RouteContext);
+    const navigate = useNavigate();
     const handleLogin = async (email, password) => {
         const result = await login(email, password);
         if (result.error) {
             removeToken();
-            return result.error;{onRouteChange}
+            return result.error;
         } else {
             console.log("login", result)
             setUserData(result.user);
             saveToken(result.token);
-            onRouteChange("home");
+            navigate("/");
             return null;
         }
     }
     const handleLogout = () => {
         removeToken();
         setUserData(null);
-        onRouteChange("home");
+        navigate("/");
     }
     return (
         <AuthContext value={{userData:userData,onLogin:handleLogin,onLogout:handleLogout}}>

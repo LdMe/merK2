@@ -1,29 +1,33 @@
 import { useState,useEffect,useContext } from "react";
-import StandCard from "../standCard/StandCard";
+import StandCard from "../../components/standCard/StandCard";
 import { getAllStands } from "../../utils/api/stand";
 import RouteContext from "../../context/RouteContext";
 import './StandList.css';
+import { useLoaderData } from "react-router-dom";
 
 
 function StandList(){
-    const [stands,setStands] = useState([]);
+    const defaultStands  = useLoaderData();
+    const [stands,setStands] = useState(defaultStands);
     const [error,setError] = useState(null);
-    const {onRouteChange} = useContext(RouteContext);
-    useEffect(()=>{
-        handleLoadStands();
-    },[])
-    const handleLoadStands = async()=>{
-        const data  = await getAllStands();
-        if(data.error){
-            if(data.status === 401){
-                onRouteChange("login");
-            }else{
-                setError(data.error);
-            }
-        }else{
-            setStands(data);
-        }
-    }
+
+    console.log("estandmos o no estandmos")
+
+    // useEffect(()=>{
+    //     handleLoadStands();
+    // },[])
+    // const handleLoadStands = async()=>{
+    //     const data  = await getAllStands();
+    //     if(data.error){
+    //         if(data.status === 401){
+    //             onRouteChange("login");
+    //         }else{
+    //             setError(data.error);
+    //         }
+    //     }else{
+    //         setStands(data);
+    //     }
+    // }
     return (
         <section className="stand-list">
             <h1>Stands</h1>
