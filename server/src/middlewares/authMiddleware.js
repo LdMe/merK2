@@ -9,13 +9,12 @@ function isLoggedInSession(req,res,next){
     next();
 }
 function isLoggedInAPI(req,res,next){
-    const authorization  = req.headers.authorization;
-    console.log("authorization",authorization);
-    if(!authorization){
+    const token  = req.cookies?.token;
+    if(!token){
         res.status(401).json({error:"You shall not pass"});
     }
-    let token = authorization.split(" "); // si no hay bearer espacio fallaria
-    token = token.pop();
+    // let token = authorization.split(" "); // si no hay bearer espacio fallaria
+    // token = token.pop();
     const result = verifyToken(token);
     console.log("token verified",result);
     if(result){
@@ -23,6 +22,7 @@ function isLoggedInAPI(req,res,next){
             user_id: result.user_id,
             role: result.role
         }
+        // podemos alargar el token y la cookie cada vez que entramos
         next();
     }else{
         res.status(401).json({error:"You shall not pass"});
