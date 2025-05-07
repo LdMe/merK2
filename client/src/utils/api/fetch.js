@@ -1,18 +1,19 @@
-import { getToken } from "../localStorage";
 const BASE_URL = "http://localhost:3003/api";
 
 async function fetchData(route,method="GET",data=null){
     const url = BASE_URL + route;
-    const token =  getToken();
+    //const token =  getToken();
     const options = {
         method : method,
-        headers: {}
+        headers: {
+            "Content-Type" : "application/json"
+        },
+        credentials: "include"
     };
-    if(token){
-        options.headers["Authorization"] = `Bearer ${token}`;
-    }
+    // if(token){
+    //     options.headers["Authorization"] = `Bearer ${token}`;
+    // }
     if(data){
-        options.headers["Content-Type"] = "application/json";
         options.body = JSON.stringify(data)
     }
     const response  = await fetch(url,options);

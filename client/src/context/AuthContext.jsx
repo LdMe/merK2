@@ -1,7 +1,6 @@
-import { createContext,useContext,useState } from "react";
+import { createContext,useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { login } from "../utils/api/auth";
-import { saveToken,removeToken } from "../utils/localStorage";
+import { getUserInfo, login,logout } from "../utils/api/auth";
 
 const AuthContext = createContext({
     userData: {},
@@ -12,21 +11,30 @@ const AuthContext = createContext({
 const AuthProvider = ({children}) => {
     const [userData, setUserData] = useState(null);
     const navigate = useNavigate();
+
+    useEffect(()=>{
+        handleGetUserInfo();
+    },[])
+    const handleGetUserInfo= async()=>{
+        const result = await getUserInfo();
+        console.log("user info",result);
+        if(result.user){
+            setUserData(result.user);
+        }
+    }
     const handleLogin = async (email, password) => {
         const result = await login(email, password);
         if (result.error) {
-            removeToken();
             return result.error;
         } else {
             console.log("login", result)
             setUserData(result.user);
-            saveToken(result.token);
             navigate("/");
             return null;
         }
     }
     const handleLogout = () => {
-        removeToken();
+        logout();
         setUserData(null);
         navigate("/");
     }
