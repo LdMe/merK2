@@ -25,7 +25,7 @@ async function getByID(req, res) {
 async function create(req, res) {
     try {
         const data = req.body;
-        data.image = req.file.filename;
+        data.image = req.file?.filename;
         const response = await productController.create(data);
         res.json(response);
     } catch (error) {
