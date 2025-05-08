@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import Navbar from './components/navbar/Navbar';
-import ProductList from './pages/productList/ProductList';
+import ProductList from './pages/product/productList/ProductList';
 import StandList from './pages/standList/StandList';
-import Auth from './components/auth/Auth';
+import Auth from './pages/auth/Auth';
 import RouteContext from './context/RouteContext';
 import { AuthProvider } from './context/AuthContext';
 import './App.css'
