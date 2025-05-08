@@ -1,9 +1,9 @@
-import './ProductCard.css';
+import styles from './ProductCard.module.css';
 
 function ProductCard ({product,onRemove}){
 
     return(
-        <article className="article product">
+        <article className={"article product "+styles.card}>
             <section className="product-image">
                 <img src={product.image} alt={product.name}/>
             </section>

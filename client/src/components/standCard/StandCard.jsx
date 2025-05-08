@@ -3,7 +3,7 @@ import './StandCard.css';
 function StandCard ({stand}){
 
     return(
-        <article className="article stand">
+        <article className="article stand card">
             
             <section className="stand-data">
                 <h2>{stand.name}</h2>

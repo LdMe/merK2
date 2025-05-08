@@ -1,0 +1,8 @@
+.card {
+    background-color: red;
+    
+    &:hover {
+        background-color: #fabada;
+    }
+}
+
