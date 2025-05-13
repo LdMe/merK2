@@ -16,7 +16,6 @@ async function register(req, res) {
 }
 async function login(req, res) {
     try {
-        console.log(req)
         const {email,password}  = req.body;
         const result = await authController.login(email,password);
         

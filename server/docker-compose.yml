@@ -25,6 +25,7 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql # se puede comentar
       - ./database:/docker-entrypoint-initdb.d:ro
+      - ./database/conf/myconf.cnf:/etc/mysql/conf.d/custom.cnf:ro
 
 volumes:
   mysql_data:

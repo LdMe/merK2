@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom';
+import { getProductImage } from '../../utils/api/product';
 import styles from './ProductCard.module.css';
 
 function ProductCard({ product, onRemove }) {
-
+    console.log(getProductImage(product))
     return (
         <article className={"article product " + styles.card}>
             <section className="product-image">
-                <img src={product.image} alt={product.name} />
+                <img src={getProductImage(product)} alt={product.name} />
             </section>
             <section className="product-data">
                 <h2>{product.name}</h2>

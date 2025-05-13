@@ -7,6 +7,7 @@ function NewProduct(){
         description: "",
         price: 0,
         stock: 0,
+        image: null,
         stand_id:1
     })
     const stands = useLoaderData();
@@ -43,6 +44,13 @@ function NewProduct(){
             return {...oldProduct,stand_id:newStandId}
         })
     }
+    const handleImage = (e)=> {
+        const newImage = e.target;
+        console.log("image",newImage)
+        setProductData((oldProduct)=>{
+            return {...oldProduct,image:newImage}
+        })
+    }
     const handleSubmit =async (e)=>{
         e.preventDefault();
         const response = await createProduct(productData);
@@ -59,6 +67,8 @@ function NewProduct(){
             <input type="number" name="price" id="price" onChange={handlePrice}/>
             <label htmlFor="stock">Stock</label>
             <input type="number" name="stock" id="stock" onChange={handleStock} />
+            <label htmlFor="image">Imagen</label>
+            <input type="file" name="image" id="image"  onChange={handleImage}/>
             <label htmlFor="stand_id">Stand</label>
             <select name="stand_id" id="stand_id" onChange={handleStandId}>
                 {stands.map((stand)=>{

@@ -13,7 +13,6 @@ import {
 
 async function register(userData) {
     //const {name,email,password,role} = req.body;
-    console.log(userData);
     if (!userData.name) {
         throw new UserNameNotProvided();
     }
@@ -80,7 +79,6 @@ async function getUserInfo(id) {
     const seller = await Seller.findByPk(user.user_id);
     const role = seller ? "seller" : "client";
     user.dataValues.role = role;
-    console.log("user",user)
     return user;
 }
 

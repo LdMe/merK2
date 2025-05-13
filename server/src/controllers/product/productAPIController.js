@@ -41,7 +41,6 @@ async function create(req, res) {
 async function edit(req, res) {
     try {
         const id = req.params.id;
-        console.log("file",req.body)
         const data = req.body;
         data.image = req.file?.filename;
         const result = await productController.edit(id, data);
